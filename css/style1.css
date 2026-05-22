@@ -9,8 +9,21 @@
 }
 div.container{/* định dạng thẻ container*/
 	margin : 10px 100px 0px;
-	background-color: #00FFFF ;
+	background-color: #E0FFFF ;
 	padding : 20px;
 	
 }
+  h3.tieude{
+		font-size: 18px;
+		color: while;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+ } 
+ img{ 
+	witdh :100% ;
+	max-width: 200px;
+	border-radius:100%;
+	
+ }
  
+	
