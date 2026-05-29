@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hiển thị thông báo </title>
+     <!-- <link rel = "stylesheet" href = "../css/style1.css">  -->
+</head>
+<body>
+    <div class = "container">
+        <p id = "name" > Vinh</p> 
+    </div>
+    <script>
+        let name = prompt("Nhập vào họ tên của bạn: ");
+        document.getElementById("name").innerHTML = name;
+        let yob = Number(prompt("Nhập vào năm sinh của bạn: "));
+        // window.alert("Xin chào" + name + ", năm 2026 bạn đã " +(2026 - yob )+ " tuổi rồi." );
+        window.alert(`Xin chào" ${name} ", năm 2026 bạn đã " ${2026 - yob } " tuổi rồi.` );
+    </script> 
+    <a href="../index.html">Quay lại trang chủ</a>
+</body>
+</html>

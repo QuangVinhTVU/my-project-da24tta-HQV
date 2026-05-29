@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tính diện tích </title>
+     <!-- <link rel = "stylesheet" href = "../css/style1.css">  -->
+</head>
+<body>
+    <script>
+        function promptNumber(message) {
+            let v;
+            do {
+                const s = prompt(message);
+                if (s === null) return null; // hủy
+                v = parseFloat(s);
+            } while (Number.isNaN(v));
+            return v;
+        }
+
+        let d = promptNumber("Nhập vào chiều dài:");
+        if (d === null) { alert('Đã hủy'); throw new Error('Hủy'); }
+
+        let r = promptNumber("Nhập vào chiều rộng:");
+        if (r === null) { alert('Đã hủy'); throw new Error('Hủy'); }
+            // Neu r > d thi nhap lai
+        while (r > d) {
+            alert("Chiều rộng không được lớn hơn chiều dài. Vui lòng nhập lại.");
+            d = promptNumber("Nhập lại chiều dài:");
+            if (d === null) { alert('Đã hủy'); throw new Error('Hủy'); }
+            r = promptNumber("Nhập lại chiều rộng:");
+            if (r === null) { alert('Đã hủy'); throw new Error('Hủy'); }
+        }
+            // Sau khi hợp lệ tính diện tích
+        window.alert(`Diện tích hình vuông có cạnh ${d} cm là ${d * d} cm^2.`);
+        window.alert(`Diện tích hình chữ nhật có chiều dài ${d} cm và chiều rộng ${r} cm là ${d * r} cm^2.`);
+    </script> 
+    
+    <a href="../index.html">Quay lại trang chủ</a>
+</body>
+</html>
