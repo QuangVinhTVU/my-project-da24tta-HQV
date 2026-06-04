@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Hóa đơn bán hàng</h1>
-    <p>Ngày: 29/05/2026</p>
-    <table border="1" cellspacing="0" cellpadding="5">
+    <p>Ngày: <input id="invoice-date" type="date" value="2026-05-29"></p>
+    <table id="invoice-table" border="1" cellspacing="0" cellpadding="5">
         <thead>
             <tr>
                 <th>STT</th>
@@ -17,64 +17,338 @@
                 <th>Đơn giá</th>
                 <th>Đơn vị tính</th>
                 <th>Thành tiền</th>
+                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
                 <td>Bút bi</td>
-                <td>10</td>
-                <td>5.000</td>
+                <td><input class="qty" type="number" min="0" value="10"></td>
+                <td><input class="price" type="text" value="5.000"></td>
                 <td>Cái</td>
-                <td>50.000</td>
+                <td class="line-total">50.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Vở kẻ ngang</td>
-                <td>5</td>
-                <td>12.000</td>
+                <td><input class="qty" type="number" min="0" value="5"></td>
+                <td><input class="price" type="text" value="12.000"></td>
                 <td>Quyển</td>
-                <td>60.000</td>
+                <td class="line-total">60.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Tẩy</td>
-                <td>8</td>
-                <td>3.000</td>
+                <td><input class="qty" type="number" min="0" value="8"></td>
+                <td><input class="price" type="text" value="3.000"></td>
                 <td>Cái</td>
-                <td>24.000</td>
+                <td class="line-total">24.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>Keo dán</td>
-                <td>2</td>
-                <td>20.000</td>
+                <td><input class="qty" type="number" min="0" value="2"></td>
+                <td><input class="price" type="text" value="20.000"></td>
                 <td>Tuýp</td>
-                <td>40.000</td>
+                <td class="line-total">40.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Thước kẻ</td>
-                <td>3</td>
-                <td>7.000</td>
+                <td><input class="qty" type="number" min="0" value="3"></td>
+                <td><input class="price" type="text" value="7.000"></td>
                 <td>Cái</td>
-                <td>21.000</td>
+                <td class="line-total">21.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
             <tr>
                 <td>6</td>
                 <td>Sổ tay</td>
-                <td>4</td>
-                <td>15.000</td>
+                <td><input class="qty" type="number" min="0" value="4"></td>
+                <td><input class="price" type="text" value="15.000"></td>
                 <td>Quyển</td>
-                <td>60.000</td>
+                <td class="line-total">60.000</td>
+                <td><button class="delete-row">Xóa</button></td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5"><strong>Tổng thành toán</strong></td>
-                <td><strong>255.000</strong></td>
+                <td id="grand-total"><strong>255.000</strong></td>
             </tr>
         </tfoot>
     </table>
-</body>
-</html>
+    <p>
+        <button id="add-row">Thêm dòng</button>
+    </p>
+    
+    <script>
+    // Tùy chọn: nếu bạn muốn hiển thị chuỗi ngày đã được địa phương hóa ở nơi khác,
+    // bạn có thể đọc giá trị của input ngày và định dạng nó bằng Intl.DateTimeFormat.
+        (function wireDateInput(){
+            const dateInput = document.getElementById('invoice-date');
+            if (!dateInput) return;
+            // Giữ input ở định dạng ISO (YYYY-MM-DD) để dễ chỉnh sửa; bạn cũng có thể hiển thị chuỗi đã định dạng ở chỗ khác nếu cần.
+            dateInput.addEventListener('change', function () {
+                // Ví dụ: console.log ngày đã định dạng
+                const d = dateInput.valueAsDate;
+                if (d) {
+                    // được định dạng như 29/05/2026
+                    const formatted = new Intl.DateTimeFormat('vi-VN').format(d);
+                    // Nếu bạn muốn hiển thị ngày đã định dạng này trong một phần tử khác, hãy tạo/sử dụng phần tử đó và gán textContent.
+                    // Hiện tại giữ nguyên giá trị input để người dùng có thể chỉnh sửa.
+                    // console.log('Ngày hóa đơn thay đổi thành', formatted);
+                }
+            });
+        })();
+    // Hàm trợ giúp: chuyển chuỗi số định dạng vi-VN như "12.345" -> 12345
+        function parseVnNumber(str) {
+            if (typeof str === 'number') return str;
+            if (!str) return 0;
+            // Remove whitespace and thousands separators (.) and replace comma with dot if present
+            const cleaned = String(str).trim().replace(/\./g, '').replace(/,/g, '.');
+            const n = parseFloat(cleaned);
+            return isNaN(n) ? 0 : n;
+        }
+
+        // Hàm trợ giúp: định dạng số theo vi-VN với dấu chấm phân nghìn và không có chữ số thập phân
+        function formatVnNumber(num) {
+            return new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(Math.round(num));
+        }
+
+        function recalc() {
+            const rows = document.querySelectorAll('#invoice-table tbody tr');
+            let grand = 0;
+            rows.forEach(row => {
+                const qtyEl = row.querySelector('.qty');
+                const priceEl = row.querySelector('.price');
+                const totalEl = row.querySelector('.line-total');
+                const qty = parseFloat(qtyEl.value) || 0;
+                const price = parseVnNumber(priceEl.value) || 0;
+                const lineTotal = qty * price;
+                totalEl.textContent = formatVnNumber(lineTotal);
+                grand += lineTotal;
+            });
+            const grandEl = document.getElementById('grand-total');
+            if (grandEl) grandEl.innerHTML = '<strong>' + formatVnNumber(grand) + '</strong>';
+        }
+
+        // Gắn sự kiện
+        document.addEventListener('input', function (e) {
+            if (e.target.classList.contains('qty') || e.target.classList.contains('price')) {
+                recalc();
+            }
+        <!DOCTYPE html>
+        <html lang="vi">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Hóa đơn bán hàng</title>
+            <style>
+                /* CSS cơ bản để nhìn đẹp một chút, vẫn đơn giản */
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                table { border-collapse: collapse; width: 100%; max-width: 900px; }
+                th, td { border: 1px solid #666; padding: 6px 8px; text-align: left; }
+                th { background: #eee; }
+                input[type="number"] { width: 80px; }
+                input.price { width: 100px; }
+                .actions button { margin-right: 4px; }
+                #add-row { margin-top: 10px; }
+            </style>
+        </head>
+        <body>
+            <h1>Hóa đơn bán hàng</h1>
+
+            <!-- Ngày có thể sửa được -->
+            <p>Ngày: <input id="invoice-date" type="date" value="2026-05-29"></p>
+
+            <!-- Bảng giữ nguyên cấu trúc: STT, tên, số lượng, đơn giá, đơn vị, thành tiền, hành động -->
+            <table id="invoice-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên hàng</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Đơn vị</th>
+                        <th>Thành tiền</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu mặc định giống bản gốc nhưng dùng input cho qty và price -->
+                    <tr>
+                        <td>1</td>
+                        <td>Bút bi</td>
+                        <td><input class="qty" type="number" min="0" value="10"></td>
+                        <td><input class="price" type="text" value="5.000"></td>
+                        <td>Cái</td>
+                        <td class="line-total">50.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Vở kẻ ngang</td>
+                        <td><input class="qty" type="number" min="0" value="5"></td>
+                        <td><input class="price" type="text" value="12.000"></td>
+                        <td>Quyển</td>
+                        <td class="line-total">60.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tẩy</td>
+                        <td><input class="qty" type="number" min="0" value="8"></td>
+                        <td><input class="price" type="text" value="3.000"></td>
+                        <td>Cái</td>
+                        <td class="line-total">24.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Keo dán</td>
+                        <td><input class="qty" type="number" min="0" value="2"></td>
+                        <td><input class="price" type="text" value="20.000"></td>
+                        <td>Tuýp</td>
+                        <td class="line-total">40.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Thước kẻ</td>
+                        <td><input class="qty" type="number" min="0" value="3"></td>
+                        <td><input class="price" type="text" value="7.000"></td>
+                        <td>Cái</td>
+                        <td class="line-total">21.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Sổ tay</td>
+                        <td><input class="qty" type="number" min="0" value="4"></td>
+                        <td><input class="price" type="text" value="15.000"></td>
+                        <td>Quyển</td>
+                        <td class="line-total">60.000</td>
+                        <td class="actions"><button class="delete-row">Xóa</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"><strong>Tổng thành toán</strong></td>
+                        <td id="grand-total"><strong>255.000</strong></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p><button id="add-row">Thêm dòng</button></p>
+
+            <script>
+                /*
+                 * - Tự tính thành tiền mỗi dòng khi thay đổi số lượng hoặc giá
+                 * - Thêm / xóa dòng
+                 * - Định dạng số kiểu vi-VN (dấu chấm phân nghìn)
+                 */
+
+                // Hàm chuyển chuỗi như "12.345" -> số 12345
+                function parseVnNumber(str) {
+                    if (!str && str !== 0) return 0;
+                    // loại bỏ dấu chấm, thay dấu phẩy bằng dấu chấm để parseFloat hiểu
+                    var s = String(str).trim().replace(/\./g, '').replace(/,/g, '.');
+                    var n = parseFloat(s);
+                    return isNaN(n) ? 0 : n;
+                }
+
+                // Hàm định dạng số theo vi-VN, không hiện thập phân
+                function formatVnNumber(num) {
+                    return new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 0 }).format(Math.round(num));
+                }
+
+                // Tính lại tổng của toàn bộ bảng
+                function recalc() {
+                    var rows = document.querySelectorAll('#invoice-table tbody tr');
+                    var grand = 0;
+                    for (var i = 0; i < rows.length; i++) {
+                        var row = rows[i];
+                        var qtyEl = row.querySelector('.qty');
+                        var priceEl = row.querySelector('.price');
+                        var totalEl = row.querySelector('.line-total');
+                        var qty = parseFloat(qtyEl.value) || 0;
+                        var price = parseVnNumber(priceEl.value) || 0;
+                        var line = qty * price;
+                        totalEl.textContent = formatVnNumber(line);
+                        grand += line;
+                    }
+                    var grandEl = document.getElementById('grand-total');
+                    if (grandEl) grandEl.innerHTML = '<strong>' + formatVnNumber(grand) + '</strong>';
+                }
+
+                // Đánh lại STT (cột đầu)
+                function reindexRows() {
+                    var rows = document.querySelectorAll('#invoice-table tbody tr');
+                    for (var i = 0; i < rows.length; i++) {
+                        var stt = rows[i].querySelector('td:first-child');
+                        if (stt) stt.textContent = (i + 1).toString();
+                    }
+                }
+
+                // Gắn sự kiện xóa cho một nút
+                function makeDeleteHandler(btn) {
+                    btn.addEventListener('click', function () {
+                        var tr = btn.closest('tr');
+                        if (!tr) return;
+                        tr.parentNode.removeChild(tr);
+                        reindexRows();
+                        recalc();
+                    });
+                }
+
+                // Gắn sẵn cho các nút hiện có
+                var dels = document.querySelectorAll('.delete-row');
+                for (var i = 0; i < dels.length; i++) makeDeleteHandler(dels[i]);
+
+                // Khi thay đổi quantity hoặc price thì tính lại
+                document.addEventListener('input', function (e) {
+                    if (e.target.classList.contains('qty') || e.target.classList.contains('price')) {
+                        recalc();
+                    }
+                });
+
+                // Format giá khi rời ô (blur)
+                document.addEventListener('blur', function (e) {
+                    if (e.target.classList && e.target.classList.contains('price')) {
+                        var v = parseVnNumber(e.target.value);
+                        e.target.value = formatVnNumber(v);
+                    }
+                }, true);
+
+                // Thêm dòng mới khi bấm nút
+                document.getElementById('add-row').addEventListener('click', function () {
+                    var tbody = document.querySelector('#invoice-table tbody');
+                    var idx = tbody.querySelectorAll('tr').length + 1;
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + idx + '</td>' +
+                                   '<td><input class="name" type="text" value=""></td>' +
+                                   '<td><input class="qty" type="number" min="0" value="0"></td>' +
+                                   '<td><input class="price" type="text" value="0"></td>' +
+                                   '<td></td>' +
+                                   '<td class="line-total">0</td>' +
+                                   '<td class="actions"><button class="delete-row">Xóa</button></td>';
+                    tbody.appendChild(tr);
+                    // gán handler cho nút xóa mới
+                    var btn = tr.querySelector('.delete-row');
+                    makeDeleteHandler(btn);
+                });
+
+                // Khởi tạo tính toán lần đầu
+                recalc();
+
+            </script>
+              <a href="../index.html">Quay lại trang chủ</a>
+        </body>
+        </html>
