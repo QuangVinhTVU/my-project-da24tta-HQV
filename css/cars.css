@@ -1,0 +1,31 @@
+/* Simple responsive card grid for car listings */
+:root{--accent:#0b74de;--muted:#666}
+*{box-sizing:border-box}
+body{font-family:Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#f6f7fb;color:#222}
+.site-header{background:linear-gradient(90deg,#0b74de,#2aa0ff);color:#fff;padding:24px;text-align:center}
+.container{max-width:1100px;margin:24px auto;padding:0 16px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.control-item{display:flex;flex-direction:column;font-size:14px}
+.control-item label{font-weight:600;margin-bottom:6px}
+.control-item input,.control-item select{padding:8px;border:1px solid #ddd;border-radius:6px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(20,20,30,0.06);display:flex;flex-direction:column}
+.card img{width:100%;height:160px;object-fit:cover}
+.card .body{padding:12px;flex:1;display:flex;flex-direction:column}
+.brand{font-size:12px;color:var(--muted);margin-bottom:6px}
+.title{font-weight:700;margin:0 0 6px}
+.desc{font-size:13px;color:#444;flex:1;margin-bottom:8px}
+.price{font-weight:800;color:var(--accent);margin-bottom:8px}
+.actions{display:flex;gap:8px}
+.btn{padding:8px 10px;border-radius:6px;border:1px solid transparent;cursor:pointer}
+.btn.view{background:#0b74de;color:#fff}
+.btn.contact{background:#fff;border-color:#ddd}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);padding:20px}
+.modal.hidden{display:none}
+.modal-content{background:#fff;border-radius:8px;max-width:800px;width:100%;padding:18px;position:relative}
+.modal-content img{width:100%;height:350px;object-fit:cover;border-radius:6px;margin-bottom:12px}
+.close{position:absolute;right:10px;top:10px;background:#fff;border:0;font-size:20px;cursor:pointer}
+
+@media (max-width:520px){.card img{height:140px}.modal-content img{height:200px}}

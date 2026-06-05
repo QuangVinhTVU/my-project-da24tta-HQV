@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Thế giới ô tô - Sản phẩm</title>
+    <link rel="stylesheet" href="../css/cars.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Chợ Ô tô</h1>
+      <p>Chọn xe, so sánh, và tìm chiếc xe phù hợp với bạn.</p>
+    </header>
+
+    <main class="container">
+      <section class="controls">
+        <div class="control-item">
+          <label for="brandFilter">Hãng:</label>
+          <select id="brandFilter">
+            <option value="all">Tất cả</option>
+          </select>
+        </div>
+
+        <div class="control-item">
+          <label for="search">Tìm kiếm:</label>
+          <input id="search" placeholder="Tên xe hoặc mô tả...">
+        </div>
+
+        <div class="control-item">
+          <label for="sort">Sắp xếp:</label>
+          <select id="sort">
+            <option value="default">Mặc định</option>
+            <option value="price-asc">Giá: thấp → cao</option>
+            <option value="price-desc">Giá: cao → thấp</option>
+          </select>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery"></section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="closeModal" class="close">×</button>
+        <img id="modalImg" src="" alt="">
+        <h2 id="modalTitle"></h2>
+        <p id="modalBrand"></p>
+        <p id="modalPrice" class="price"></p>
+        <p id="modalDesc"></p>
+      </div>
+    </div>
+
+    <script src="../js/cars.js"></script>
+  </body>
+</html>
