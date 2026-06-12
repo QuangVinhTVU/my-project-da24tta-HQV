@@ -1,0 +1,57 @@
+/* Styles for html/chi-tiet.html (iPhone 14 Pro Max detail) */
+*{
+	margin : 0;
+	padding : 0; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14pt; /* Định dạng cỡ chữ */ 
+	line-height: 1.5; /* Định dạng cách dòng*/
+	
+}
+div.container{/* định dạng thẻ container*/
+	margin : 10px 100px 0px;
+	background-color: #E0FFFF ;
+	padding : 20px;
+	
+}
+  h3.tieude{
+		font-size: 18px;
+		color: while;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+ } 
+ img{ 
+	witdh :100% ;
+	max-width: 200px;
+	border-radius:100%;
+	
+ }
+ 
+:root{
+  --site-bg:#fafafa;
+  --card-bg:#ffffff;
+  --muted:#666;
+  --accent:#d00;
+}
+html,body{height:100%;margin:0;padding:0;background:var(--site-bg);color:#111}
+body{font-family: Arial, Helvetica, sans-serif;padding:20px}
+a.back-link{display:inline-block;margin-bottom:12px;color:#333;text-decoration:none}
+a.back-link:hover{text-decoration:underline}
+.product{display:flex;gap:24px;align-items:flex-start;background:transparent}
+.product .image{flex:0 0 320px}
+.product img{width:100%;height:auto;max-width:320px;border:1px solid #ddd;padding:8px;background:var(--card-bg);border-radius:6px}
+.specs{flex:1;max-width:820px}
+.price{color:var(--accent);font-weight:700;font-size:1.3rem;margin:6px 0}
+h1{margin:8px 0 12px}
+table{border-collapse:collapse;width:100%;margin-top:12px;background:var(--card-bg);border-radius:6px;overflow:hidden}
+table td{padding:10px;border-bottom:1px solid #f0f0f0}
+table tr:last-child td{border-bottom:none}
+table td:first-child{width:35%;font-weight:600;color:var(--muted);background:#fbfbfb}
+h3{margin-top:18px}
+@media (max-width:800px){
+  .product{flex-direction:column}
+  .product .image{width:100%;max-width:420px}
+  table td:first-child{width:40%}
+}
+
+/* small utility classes used in project */
+.muted{color:var(--muted)}
