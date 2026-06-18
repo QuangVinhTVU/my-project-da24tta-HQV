@@ -10,12 +10,12 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-        
         <!--<link rel="stylesheet" href="../css/style.css">-->
+                <script src="../js/data.js"></script>
         <script src="../js/lib.js"></script>
-
     </head>
     <body>
+         <a href="../index.html">← Quay lại trang chủ</a>
         <div class="container">
             <div class = "row row-cols-1 row-cols-4" id="product-list">
                 <!-- Sản phẩm sẽ được thêm vào đây -->
@@ -24,10 +24,15 @@
 
 
 
-            <script> 
-                createItemV2(product);
+            <script>
+                // Hiển thị tất cả sản phẩm từ data.js
+                if (typeof renderProducts === 'function' && typeof products !== 'undefined') {
+                    renderProducts(products);
+                } else if (typeof createItemV2 === 'function' && typeof product !== 'undefined') {
+                    createItemV2(product);
+                }
             </script>
         </div>
-
+        
     </body>
 </html>

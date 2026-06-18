@@ -68,7 +68,7 @@ function createItem(obj) // obj là đối tượng thực tế đang quản lý
  
 function createItemV2(obj) 
 {
-    const list = document.getElementById("product-list"); // truy suất khuung chưa DS sản phẩm
+    const list = document.getElementById("product-list"); // truy suất khung chưa DS sản phẩm
     list.innerHTML = `
         <div class="col">
             <div class="card product-item"> 
@@ -86,5 +86,29 @@ function createItemV2(obj)
             
      `;
   
+}
+
+// Hàm mới: render một mảng sản phẩm vào #product-list
+function renderProducts(list) {
+    const container = document.getElementById('product-list');
+    container.innerHTML = ''; // xóa nội dung cũ
+    list.forEach(p => {
+        const col = document.createElement('div');
+        col.className = 'col';
+        col.innerHTML = `
+            <div class="card product-item"> 
+                <div class="product-image">
+                    <img class="card-img-top" src="${p.img}" alt="${p.name}">
+                </div>
+                <div class="card-body product-info text-center">
+                    <h4 class="card-title text-danger">${p.name}</h4>
+                    <h5 class="card-text">${p.price}</h5>
+                    <p style="text-align: justify; line-height: 1.5;" class="card-text"> ${p.description}</p>
+                    <a href="${p.linkProduct}" class="btn btn-info">Xem chi tiết</a>
+                </div>
+            </div>
+        `;
+        container.appendChild(col);
+    });
 }
 

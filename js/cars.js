@@ -1,14 +1,14 @@
 const cars = [
   {id:1,brand:'Toyota',name:'Toyota Camry 2022',price:950000000,
-        img:'../assets/images/camry.jpg',desc:'Sedan hạng D, tiết kiệm nhiên liệu, phù hợp gia đình.'},
+        img:'../assets/images/xecamry.jpg',desc:'Sedan hạng D, tiết kiệm nhiên liệu, phù hợp gia đình.'},
 
   {id:2,brand:'Honda',name:'Honda Civic 2021',price:730000000, 
         img:'../assets/images/avatar.jpg',desc:'Thiết kế thể thao, động cơ mạnh mẽ, trang bị an toàn tốt.'},
 
   {id:3,brand:'Ford',name:'Ford Ranger 2023',price:820000000,
-        img:'../assets/images/xe3.jpg',desc:'Bán tải mạnh mẽ, chở đồ tốt, vận hành bền bỉ.'},
+        img:'../assets/images/xeford.jpg',desc:'Bán tải mạnh mẽ, chở đồ tốt, vận hành bền bỉ.'},
   {id:4,brand:'BMW',name:'BMW 3 Series 2022',price:1850000000,
-         img:'https://source.unsplash.com/800x600/?bmw,car',desc:'Sedan sang trọng, cảm giác lái thể thao, nội thất cao cấp.'},
+         img:'../assets/images/xe4.jpg',desc:'Sedan sang trọng, cảm giác lái thể thao, nội thất cao cấp.'},
   {id:5,brand:'Mercedes',name:'Mercedes C-Class 2021',price:1720000000, 
         img:'https://source.unsplash.com/800x600/?mercedes,car',desc:'Thương hiệu Đức, tiện nghi và sang trọng.'},
   {id:6,brand:'Toyota',name:'Toyota Vios 2020',price:420000000, 
@@ -54,7 +54,23 @@ function renderList(list){
 
 function openModal(car){
   const m = document.getElementById('modal');
-  document.getElementById('modalImg').src = car.img;
+  // Nếu ảnh lấy từ source.unsplash.com, yêu cầu kích thước lớn hơn để tránh mờ
+  let modalSrc = car.img;
+  try {
+    if (/source\.unsplash\.com/.test(car.img)) {
+      // thay 800x600 -> 1600x1200 nếu có pattern kích thước
+      modalSrc = car.img.replace(/\d+x\d+/, '1600x1200');
+    }
+  } catch (e) { /* ignore */ }
+  const modalImg = document.getElementById('modalImg');
+  modalImg.removeAttribute('loading');
+  modalImg.src = modalSrc;
+  // thêm srcset cho màn hình retina
+  if (/source\.unsplash\.com/.test(modalSrc)) {
+    modalImg.srcset = modalSrc + ' 1x, ' + modalSrc.replace(/1600x1200/, '3200x2400') + ' 2x';
+  } else {
+    modalImg.removeAttribute('srcset');
+  }
   document.getElementById('modalTitle').textContent = car.name;
   document.getElementById('modalBrand').textContent = car.brand;
   document.getElementById('modalPrice').textContent = formatPrice(car.price);
