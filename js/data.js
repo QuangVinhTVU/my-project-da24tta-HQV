@@ -27,14 +27,42 @@ const products = [
         name: "Xiaomi 17 Pro Max",
         price: "20.000.000đ",   
         description: "Xiaomi 17 Pro Max là một chiếc điện thoại thông minh cao cấp được sản xuất bởi Xiaomi, sản phẩm này được thương hiệu trình làng tại thị trường Trung Quốc vào ngày 25 tháng 9 năm 2025.,... ",
-        img: "../assets/images/dt3.jpg",
+        img: "../assets/images/dt33.jpg",
         linkProduct: "chi-tiet3.html"
     },
     {
         name: "Oppo Find X5 Pro",
         price: "22.000.000đ",
         description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
-        img: "../assets/images/dt33.jpg",
+        img: "../assets/images/dt4.jpg",
         linkProduct: "chi-tiet4.html"
-    }
+    },
+    {
+        name: "Oppo Find X5 Pro",
+        price: "22.000.000đ",
+        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
+        img: "../assets/images/dt4.jpg",
+        linkProduct: "chi-tiet5.html"
+    },
+    {
+        name: "Oppo Find X5 Pro",
+        price: "22.000.000đ",
+        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
+        img: "../assets/images/dt4.jpg",
+        linkProduct: "chi-tiet6.html"
+    },
+    {
+        name: "Oppo Find X5 Pro",
+        price: "22.000.000đ",
+        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
+        img: "../assets/images/dt4.jpg",
+        linkProduct: "chi-tiet7.html"
+    },
+    {
+        name: "Oppo Find X5 Pro",
+        price: "22.000.000đ",
+        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
+        img: "../assets/images/dt4.jpg",
+        linkProduct: "chi-tiet8.html"
+    },
 ];

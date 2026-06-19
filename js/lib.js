@@ -1,4 +1,4 @@
-/* mã nguồn javascript*/
+/* mã nguồn javascript
 const product = {
                     name: "Iphone 14 Pro Max",
                     price: "27.000.000đ",
@@ -6,7 +6,7 @@ const product = {
                     img: "../assets/images/ip14prm.jpg",
                     linkProduct: "chi-tiet.html"
                 };
-
+*/
 function  inBBC(n)
 {
     result = "";
@@ -71,15 +71,18 @@ function createItemV2(obj)
     const list = document.getElementById("product-list"); // truy suất khung chưa DS sản phẩm
     list.innerHTML = `
         <div class="col">
-            <div class="card product-item"> 
+            <div class="card product-item h-100"> 
             <div class="product-image">
                 <img class="card-img-top" src="${obj.img}" alt="${obj.name}">
             </div>
-            <div class="card-body product-info text-center">
+            <div class="card-body product-info text-center d-flex flex-column">
             <h4 class="card-title text-danger">${obj.name}</h4>
             <h5 class="card-text">${obj.price}</h5>
-            <p style="text-align: justify; line-height: 1.5;" class="card-text"> ${obj.description}</p>
-            <a href="${obj.linkProduct}" class="btn btn-info">Xem chi tiết</a>
+            <p style="text-align: justify; line-height: 1.5;" class="card-text flex-grow-1"> ${obj.description}</p>
+            <div class="d-flex gap-2 mt-auto">
+                <button class="btn btn-danger flex-grow-1">Mua</button>
+                <a href="${obj.linkProduct}" class="btn btn-info flex-grow-1">Xem chi tiết</a>
+            </div>
             </div>
         </div>
     </div>
@@ -96,15 +99,18 @@ function renderProducts(list) {
         const col = document.createElement('div');
         col.className = 'col';
         col.innerHTML = `
-            <div class="card product-item"> 
+            <div class="card product-item h-100"> 
                 <div class="product-image">
                     <img class="card-img-top" src="${p.img}" alt="${p.name}">
                 </div>
-                <div class="card-body product-info text-center">
+                <div class="card-body product-info text-center d-flex flex-column">
                     <h4 class="card-title text-danger">${p.name}</h4>
                     <h5 class="card-text">${p.price}</h5>
-                    <p style="text-align: justify; line-height: 1.5;" class="card-text"> ${p.description}</p>
-                    <a href="${p.linkProduct}" class="btn btn-info">Xem chi tiết</a>
+                    <p style="text-align: justify; line-height: 1.5;" class="card-text flex-grow-1"> ${p.description}</p>
+                    <div class="d-flex gap-2 mt-auto">
+                        <button class="btn btn-danger flex-grow-1">Mua</button>
+                        <a href="${p.linkProduct}" class="btn btn-info flex-grow-1">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
         `;
