@@ -1,29 +1,110 @@
-/* Học viết Css */ 
 *{
-	margin : 0;
-	padding : 0; 
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14pt; /* Định dạng cỡ chữ */ 
-	line-height: 1.5; /* Định dạng cách dòng*/
-	
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:14pt;
+    line-height:1.5;
 }
-div.container{/* định dạng thẻ container*/
-	margin : 10px 100px 0px;
-	background-color: #E0FFFF ;
-	padding : 20px;
-	
+
+body{
+    background:#dff6ff;
 }
-  h3.tieude{
-		font-size: 18px;
-		color: while;
-		text-transform: uppercase;
-		letter-spacing: 3px;
- } 
- img{ 
-	witdh :100% ;
-	max-width: 200px;
-	border-radius:100%;
-	
- }
- 
-	
+
+.container{
+    width:900px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    border:3px solid #0099cc;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h1{
+    text-align:center;
+    color:#006699;
+    margin-bottom:10px;
+}
+
+h3{
+    margin-top:20px;
+    margin-bottom:10px;
+}
+
+.tieude{
+    background:#0099cc;
+    color:white;
+    padding:8px;
+    border-radius:8px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+img{
+    width:200px;
+    height:200px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #0099cc;
+}
+
+#bang1{
+    width:100%;
+    margin-top:15px;
+}
+
+#cot1{
+    width:220px;
+    text-align:center;
+}
+
+#cot2{
+    padding:20px;
+}
+
+#bang2{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+#bang2 th{
+    background:#0099cc;
+    color:white;
+}
+
+#bang2 th,
+#bang2 td{
+    border:1px solid black;
+    padding:10px;
+}
+
+#bang2 tr:nth-child(even){
+    background:#f2f2f2;
+}
+
+ul{
+    margin-left:30px;
+    margin-top:10px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+a{
+    color:#0066cc;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    color:red;
+    text-decoration:underline;
+}
+
+h4{
+    margin-top:20px;
+    color:#006699;
+}
