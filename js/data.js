@@ -9,7 +9,7 @@ const product = {
 
 // Mảng products chứa nhiều sản phẩm
 const products = [
-    {
+    { 
         name: "Iphone 14 Pro Max",
         price: "27.000.000đ",
         description: "Iphone 14 Pro Max là một chiếc điện thoại thông minh cao cấp được sản xuất bởi Apple vào năm 2022,... ",
