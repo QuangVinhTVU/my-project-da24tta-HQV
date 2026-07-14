@@ -48,7 +48,7 @@ const products = [
         name: "Honor 600 Lite 8GB/256GB",
         price: "8.000.000đ",
         description: "Honor 600 Lite 8GB/256GB là một chiếc điện thoại thông minh vừa được sản xuất bởi Honor vào năm 2026,... ",
-        img: "../assets/images/Honor.jpg",
+        img: "../assets/images/honor.jpg",
         linkProduct: "chi-tiet6.html"
     },
     {
