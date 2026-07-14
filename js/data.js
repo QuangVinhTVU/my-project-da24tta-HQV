@@ -32,37 +32,37 @@ const products = [
     },
     {
         name: "Oppo Find X5 Pro",
-        price: "22.000.000đ",
+        price: "16.000.000đ",
         description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
         img: "../assets/images/dt4.jpg",
         linkProduct: "chi-tiet4.html"
     },
     {
-        name: "Oppo Find X5 Pro",
+        name: "iPhone 17 256GB",
         price: "22.000.000đ",
-        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
-        img: "../assets/images/dt4.jpg",
+        description: "iPhone 17 256GB là một chiếc điện thoại thông minh cao cấp được sản xuất bởi Apple vào năm 2025,... ",
+        img: "../assets/images/Iphone-17.jpg",
         linkProduct: "chi-tiet5.html"
     },
     {
-        name: "Oppo Find X5 Pro",
-        price: "22.000.000đ",
-        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
-        img: "../assets/images/dt4.jpg",
+        name: "Honor 600 Lite 8GB/256GB",
+        price: "8.000.000đ",
+        description: "Honor 600 Lite 8GB/256GB là một chiếc điện thoại thông minh vừa được sản xuất bởi Honor vào năm 2026,... ",
+        img: "../assets/images/Honor.jpg",
         linkProduct: "chi-tiet6.html"
     },
     {
-        name: "Oppo Find X5 Pro",
-        price: "22.000.000đ",
-        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
-        img: "../assets/images/dt4.jpg",
+        name: "Tecno Spark 50 4GB/128GB",
+        price: "5.890.000đ",
+        description: "Tecno Spark 50 4GB/128GB là một chiếc điện thoại thông minh vừa được sản xuất bởi Tecno,... ",
+        img: "../assets/images/Tecno-Spark-50.jpg",
         linkProduct: "chi-tiet7.html"
     },
     {
-        name: "Oppo Find X5 Pro",
-        price: "22.000.000đ",
-        description: "oppo Find X5 Pro là một chiếc điện thoại thông minh cao cấp được sản xuất bởi oppo vào năm 2022,... ",
-        img: "../assets/images/dt4.jpg",
+        name: "realme C100 4G",
+        price: "7.890.000đ",
+        description: "realme C100 4G là một chiếc điện thoại thông minh vừa được sản xuất bởi realme,... ",
+        img: "../assets/images/realme-C100.jpg",
         linkProduct: "chi-tiet8.html"
     },
 ];
